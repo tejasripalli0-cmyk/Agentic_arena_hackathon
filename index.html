@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JanSeva | Government Scheme Eligibility Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="light-theme">
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <div class="ashoka-chakra">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Ashoka_Chakra.svg" alt="Chakra">
+                </div>
+                <div class="logo-text">
+                    <span class="top">JanSeva</span>
+                    <span class="bottom">Gov of India</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" data-i18n="nav_home">Home</a></li>
+                <li><a href="#search-section" data-i18n="nav_schemes">Schemes</a></li>
+                <li><a href="#about" data-i18n="nav_about">About</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <select id="lang-selector" class="glass-select">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                    <option value="te">తెలుగు</option>
+                </select>
+                <button id="theme-toggle" class="icon-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 data-i18n="hero_title">Empowering Every Indian Citizen</h1>
+                <p data-i18n="hero_subtitle">Discover your eligibility for 500+ Central and State Government schemes in just a few clicks.</p>
+                <div class="hero-btns">
+                    <a href="#search-section" class="btn primary-btn" data-i18n="hero_cta">Check Eligibility</a>
+                    <button class="btn secondary-btn" data-i18n="hero_learn">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="count">500+</span>
+                    <p data-i18n="stat_schemes">Live Schemes</p>
+                </div>
+                <div class="stat-card">
+                    <span class="count">28</span>
+                    <p data-i18n="stat_states">States Covered</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search & Filter Section -->
+        <section id="search-section" class="main-portal">
+            <aside class="sidebar glass-card">
+                <h2 data-i18n="filter_title"><i class="fas fa-sliders-h"></i> User Profile</h2>
+                <form id="eligibility-form">
+                    <div class="input-group">
+                        <label data-i18n="label_age">Age</label>
+                        <input type="number" id="user-age" placeholder="Enter age" required>
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="label_gender">Gender</label>
+                        <select id="user-gender">
+                            <option value="All">All</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Transgender">Transgender</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="label_state">State</label>
+                        <select id="user-state">
+                            <option value="Central">All India (Central)</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Delhi">Delhi</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="label_income">Annual Income (₹)</label>
+                        <input type="number" id="user-income" placeholder="Total annual income">
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="label_occupation">Occupation</label>
+                        <select id="user-occupation">
+                            <option value="Student">Student</option>
+                            <option value="Farmer">Farmer</option>
+                            <option value="Unemployed">Unemployed</option>
+                            <option value="Self-Employed">Self-Employed/Business</option>
+                            <option value="Private Sector">Private Sector</option>
+                        </select>
+                    </div>
+                    
+                    <div class="checkbox-grid">
+                        <label class="check-container">
+                            <input type="checkbox" id="is-bpl"> <span data-i18n="check_bpl">BPL Card Holder</span>
+                        </label>
+                        <label class="check-container">
+                            <input type="checkbox" id="is-minority"> <span data-i18n="check_minority">Minority</span>
+                        </label>
+                        <label class="check-container">
+                            <input type="checkbox" id="is-disabled"> <span data-i18n="check_disability">Disability</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn submit-btn" data-i18n="btn_check">CHECK ELIGIBILITY</button>
+                </form>
+            </aside>
+
+            <div class="results-area">
+                <div class="search-bar-container glass-card">
+                    <input type="text" id="scheme-search" placeholder="Search by scheme name or keywords...">
+                    <i class="fas fa-search"></i>
+                </div>
+                
+                <div class="active-filters" id="active-filters-tags">
+                    <!-- Dynamic Tags -->
+                </div>
+
+                <div class="schemes-grid" id="schemes-container">
+                    <!-- Scheme Cards will be injected here -->
+                    <div class="initial-loader">
+                        <i class="fas fa-circle-notch fa-spin"></i>
+                        <p>Loading Government Database...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <div id="details-modal" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body">
+                <!-- Dynamic Content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>JanSeva Portal</h2>
+                <p>An integrated platform for Indian Government Schemes.</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-col">
+                    <h4 data-i18n="foot_links">Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Digital India</a></li>
+                        <li><a href="#">MyGov</a></li>
+                        <li><a href="#">PMIndia</a></li>
+                    </ul>
+                </div>
+                <div class="link-col">
+                    <h4 data-i18n="foot_contact">Contact</h4>
+                    <p>support@janseva.gov.in</p>
+                    <p>Toll Free: 1800-111-444</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 JanSeva Eligibility Portal. Built for Digital Heroes. | v1.0.4</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
